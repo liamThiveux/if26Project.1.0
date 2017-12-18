@@ -39,7 +39,6 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.ingredientField.text = self.values[row]
-        self.frigoPicker.isHidden = true
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

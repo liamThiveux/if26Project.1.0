@@ -24,6 +24,7 @@ class ListeRecetteViewController: UITableViewController {
     
     let identifiantRecetteCellule = "celulleRecette"
 
+    let URL_IMAGE = URL(string: "http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,29 @@ class ListeRecetteViewController: UITableViewController {
         return recettesSize
     }
     
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("row selected: \(indexPath.row)")
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifiantRecetteCellule, for: indexPath)
+        print("Avant definition myVC")
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
+        print("Apres definition myVC")
+        myVC.stringPassed = (cell.textLabel?.text)!
+        //self.present(myVC, animated: true, completion: nil)
+        navigationController?.pushViewController(myVC, animated: true)
+        print("Done")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Get the index path from the cell that was tapped
+        let indexPath = tableView.indexPathForSelectedRow
+        // Get the Row of the Index Path and set as index
+        let index = indexPath?.row
+        // Get in touch with the DetailViewController
+        let detailViewController = segue.destination as! DetailTestViewController
+        // Pass on the data to the Detail ViewController by setting it's indexPathRow value
+        detailViewController.detailLabel = indexPath?.row
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifiantRecetteCellule, for: indexPath)
@@ -82,11 +105,47 @@ class ListeRecetteViewController: UITableViewController {
             print(error)
         }
         cell.textLabel?.text   =   "\(arrayRecette[indexPath.row].titre)"
-        cell.detailTextLabel?.text = "\(arrayRecette[indexPath.row].photo)"
+        let session = URLSession(configuration: .default)
+        
+        //creating a dataTask
+        let getImageFromUrl = session.dataTask(with: URL_IMAGE!) { (data, response, error) in
+            
+            //if there is any error
+            if let e = error {
+                //displaying the message
+                print("Error Occurred: \(e)")
+                
+            } else {
+                //in case of now error, checking wheather the response is nil or not
+                if (response as? HTTPURLResponse) != nil {
+                    
+                    //checking if the response contains an image
+                    if let imageData = data {
+                        
+                        //getting the image
+                        let image = UIImage(data: imageData)
+                        
+                        DispatchQueue.main.async {
+                            //displaying the image
+                            cell.imageView?.image = image
+                        }
+                    } else {
+                        print("Image file is currupted")
+                    }
+                } else {
+                    print("No response from server")
+                }
+            }
+        }
+        
+        //starting the download task
+        getImageFromUrl.resume()
         return cell
     }
     
 
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

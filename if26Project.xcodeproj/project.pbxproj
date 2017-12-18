@@ -12,10 +12,11 @@
 		880719711FD6FDB4009588EF /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 880719591FD6FCF9009588EF /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		885324371FE02CE300507F2E /* Recette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885324361FE02CE300507F2E /* Recette.swift */; };
 		8853243F1FE02CFA00507F2E /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853243E1FE02CFA00507F2E /* Ingredient.swift */; };
+		886FA7751FE8228000A00731 /* DetailTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FA7741FE8228000A00731 /* DetailTestViewController.swift */; };
+		88BC6DC71FE80D9000A5A8F9 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC6DC61FE80D9000A5A8F9 /* MealViewController.swift */; };
 		88CCEDE51FCEDC1200255FDE /* ListeRecetteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCEDE41FCEDC1200255FDE /* ListeRecetteViewController.swift */; };
 		88CCEDE71FCEDD6100255FDE /* FrigoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCEDE61FCEDD6100255FDE /* FrigoViewController.swift */; };
 		88CCEDE91FCEDE8300255FDE /* DDFrigoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCEDE81FCEDE8300255FDE /* DDFrigoViewController.swift */; };
-		88D6B8D81FE28C99008DFBCD /* testTabviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6B8D71FE28C99008DFBCD /* testTabviewTableViewController.swift */; };
 		88F7423B1FCC5BAA00FAB1E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7423A1FCC5BAA00FAB1E4 /* AppDelegate.swift */; };
 		88F7423D1FCC5BAA00FAB1E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7423C1FCC5BAA00FAB1E4 /* ViewController.swift */; };
 		88F742401FCC5BAA00FAB1E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F7423E1FCC5BAA00FAB1E4 /* Main.storyboard */; };
@@ -117,10 +118,11 @@
 		8807194E1FD6FCF8009588EF /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		885324361FE02CE300507F2E /* Recette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recette.swift; sourceTree = "<group>"; };
 		8853243E1FE02CFA00507F2E /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		886FA7741FE8228000A00731 /* DetailTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTestViewController.swift; sourceTree = "<group>"; };
+		88BC6DC61FE80D9000A5A8F9 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		88CCEDE41FCEDC1200255FDE /* ListeRecetteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRecetteViewController.swift; sourceTree = "<group>"; };
 		88CCEDE61FCEDD6100255FDE /* FrigoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrigoViewController.swift; sourceTree = "<group>"; };
 		88CCEDE81FCEDE8300255FDE /* DDFrigoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDFrigoViewController.swift; sourceTree = "<group>"; };
-		88D6B8D71FE28C99008DFBCD /* testTabviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testTabviewTableViewController.swift; sourceTree = "<group>"; };
 		88F742371FCC5BAA00FAB1E4 /* if26Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = if26Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F7423A1FCC5BAA00FAB1E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88F7423C1FCC5BAA00FAB1E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -222,7 +224,8 @@
 				88F78B9D1FD004FE006804A1 /* SQLiteViewController.swift */,
 				885324361FE02CE300507F2E /* Recette.swift */,
 				8853243E1FE02CFA00507F2E /* Ingredient.swift */,
-				88D6B8D71FE28C99008DFBCD /* testTabviewTableViewController.swift */,
+				88BC6DC61FE80D9000A5A8F9 /* MealViewController.swift */,
+				886FA7741FE8228000A00731 /* DetailTestViewController.swift */,
 			);
 			path = if26Project;
 			sourceTree = "<group>";
@@ -440,12 +443,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				88F78B9E1FD004FE006804A1 /* SQLiteViewController.swift in Sources */,
+				88BC6DC71FE80D9000A5A8F9 /* MealViewController.swift in Sources */,
 				88F7423D1FCC5BAA00FAB1E4 /* ViewController.swift in Sources */,
 				8853243F1FE02CFA00507F2E /* Ingredient.swift in Sources */,
 				88F7423B1FCC5BAA00FAB1E4 /* AppDelegate.swift in Sources */,
 				88CCEDE71FCEDD6100255FDE /* FrigoViewController.swift in Sources */,
 				885324371FE02CE300507F2E /* Recette.swift in Sources */,
-				88D6B8D81FE28C99008DFBCD /* testTabviewTableViewController.swift in Sources */,
+				886FA7751FE8228000A00731 /* DetailTestViewController.swift in Sources */,
 				88CCEDE51FCEDC1200255FDE /* ListeRecetteViewController.swift in Sources */,
 				88CCEDE91FCEDE8300255FDE /* DDFrigoViewController.swift in Sources */,
 			);

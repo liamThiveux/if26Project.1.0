@@ -62,17 +62,7 @@
                                     <color key="titleColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9g2-Xb-XgT" kind="show" id="xkh-nu-lPd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swe-nC-7qR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Menu du Jour" backgroundImage="cours2">
-                                    <color key="titleColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="hRJ-uj-LsM" kind="show" id="Xht-QP-Iwx"/>
+                                    <segue destination="TTt-oa-Ghi" kind="show" id="xkh-nu-lPd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G12-fb-vUv">
@@ -95,6 +85,16 @@
                                     <segue destination="uYQ-ls-X9n" kind="show" id="Fsb-aB-8bh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swe-nC-7qR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Menu du Jour" backgroundImage="cours2">
+                                    <color key="titleColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hRJ-uj-LsM" kind="show" id="Xht-QP-Iwx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="MMT-bM-kn7"/>
@@ -107,7 +107,7 @@
         <!--test-->
         <scene sceneID="yvK-76-Kan">
             <objects>
-                <viewController id="hRJ-uj-LsM" customClass="SQLiteViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MealViewController" id="hRJ-uj-LsM" customClass="MealViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yeb-tK-4U6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,59 +133,49 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mc8-Z7-fYW">
-                                <rect key="frame" x="103" y="250" width="169" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC0-0R-iZq">
+                                <rect key="frame" x="129" y="61" width="106" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="create Table link"/>
-                                <connections>
-                                    <action selector="createLinkTable:" destination="hRJ-uj-LsM" eventType="touchUpInside" id="zFn-Wd-B2I"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaV-WU-4du">
-                                <rect key="frame" x="100" y="347" width="161" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingrédients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5S-pb-KZH">
+                                <rect key="frame" x="16" y="294" width="104" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="create table Ingredient"/>
-                                <connections>
-                                    <action selector="createIngredientTable:" destination="hRJ-uj-LsM" eventType="touchUpInside" id="z9Q-K5-yuJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6c-Dr-V6O">
-                                <rect key="frame" x="108" y="173" width="153" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Etapes de réalisation : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETR-8q-xps">
+                                <rect key="frame" x="16" y="426" width="173" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create table recette"/>
-                                <connections>
-                                    <action selector="createTable:" destination="hRJ-uj-LsM" eventType="touchUpInside" id="ORX-Ca-jbq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YW-mO-O70">
-                                <rect key="frame" x="115" y="435" width="130" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDe-9P-fBV">
+                                <rect key="frame" x="16" y="462" width="314" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="create frigoTable"/>
-                                <connections>
-                                    <action selector="createFrigoTable:" destination="hRJ-uj-LsM" eventType="touchUpInside" id="oqN-H0-hxq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ye8-XE-k7L">
-                                <rect key="frame" x="164" y="554" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSp-db-Hv1">
+                                <rect key="frame" x="67" y="104" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="insertRecette:" destination="hRJ-uj-LsM" eventType="touchUpInside" id="5E8-M2-uKF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiY-pC-54M">
-                                <rect key="frame" x="172" y="617" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="List"/>
-                                <connections>
-                                    <action selector="listRecette:" destination="hRJ-uj-LsM" eventType="touchUpInside" id="rrv-ou-Oro"/>
-                                </connections>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="EZC-gg-787"/>
                     </view>
                     <navigationItem key="navigationItem" title="test" id="hK9-cY-NlF"/>
+                    <connections>
+                        <outlet property="imageMeal" destination="gSp-db-Hv1" id="5yL-zF-qF0"/>
+                        <outlet property="textEtapes" destination="ZDe-9P-fBV" id="S35-hw-bLv"/>
+                        <outlet property="title" destination="dC0-0R-iZq" id="yGN-0L-2zT"/>
+                        <outlet property="titreRecette" destination="dC0-0R-iZq" id="K6o-9v-joZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iN4-Nu-c3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,7 +276,7 @@
                                 <items>
                                     <navigationItem title="Nous contacter" id="zdI-Gx-kCy">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="FFF-TY-8pN">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ciZ-5q-iq3">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ciZ-5q-iq3">
                                                 <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
@@ -419,13 +409,13 @@
         <!--Liste Recette View Controller-->
         <scene sceneID="ehL-74-ieN">
             <objects>
-                <tableViewController id="9g2-Xb-XgT" customClass="ListeRecetteViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListeRecetteViewController" id="9g2-Xb-XgT" customClass="ListeRecetteViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vko-g5-yIr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="celulleRecette" textLabel="LGK-wU-wkz" detailTextLabel="5Q9-N9-IzU" style="IBUITableViewCellStyleSubtitle" id="S8m-0D-Zel">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="celulleRecette" textLabel="LGK-wU-wkz" style="IBUITableViewCellStyleDefault" id="S8m-0D-Zel">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S8m-0D-Zel" id="y9u-V2-KEc">
@@ -433,21 +423,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LGK-wU-wkz">
-                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Q9-N9-IzU">
-                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-fC-bGL">
+                                            <rect key="frame" x="87" y="5" width="159" height="39"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="hRJ-uj-LsM" kind="push" id="ut8-QM-S7Y"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -455,10 +445,56 @@
                             <outlet property="delegate" destination="9g2-Xb-XgT" id="kaj-js-3Q7"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="8cl-RS-Ka1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ScL-DV-E4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2125" y="2"/>
+            <point key="canvasLocation" x="2463.1999999999998" y="1.3493253373313345"/>
+        </scene>
+        <!--Detail Test View Controller-->
+        <scene sceneID="iRu-0G-rJo">
+            <objects>
+                <viewController storyboardIdentifier="DetailTestViewController" id="NU5-pW-7iu" customClass="DetailTestViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GTm-nh-kHj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHL-kj-Km4">
+                                <rect key="frame" x="110" y="314" width="139" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Ncy-wn-e2V"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailLabel" destination="NHL-kj-Km4" id="Ea9-uC-2ug"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zD-ga-UMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3149.5999999999999" y="-27.436281859070466"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0OH-UO-S4Q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TTt-oa-Ghi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4n9-UQ-rYR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9g2-Xb-XgT" kind="relationship" relationship="rootViewController" id="e0t-wc-tL5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NaR-iT-oFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2123.1999999999998" y="0.89955022488755632"/>
         </scene>
     </scenes>
     <resources>
@@ -474,6 +510,7 @@
         <image name="twitterlogo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cmc-6e-dr5"/>
+        <segue reference="ut8-QM-S7Y"/>
+        <segue reference="Phf-hG-Bso"/>
     </inferredMetricsTieBreakers>
 </document>
