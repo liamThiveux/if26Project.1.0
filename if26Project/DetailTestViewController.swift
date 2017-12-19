@@ -10,10 +10,12 @@ import UIKit
 
 class DetailTestViewController: UIViewController {
 
-    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var detailRecette: UILabel!
+    var stringPassed = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+            detailRecette.text = stringPassed
         // Do any additional setup after loading the view.
     }
 

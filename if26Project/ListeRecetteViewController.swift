@@ -12,7 +12,9 @@ import SQLite
 class ListeRecetteViewController: UITableViewController {
 
     var database : Connection!
-    
+    var recetteNameArr: [String] = []
+    var imageArr: [String] = []
+
     // Table recette
     let recetteTable = Table("recettes")
     let id = Expression<Int>("id")
@@ -25,9 +27,10 @@ class ListeRecetteViewController: UITableViewController {
     let identifiantRecetteCellule = "celulleRecette"
 
     let URL_IMAGE = URL(string: "http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg")
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageArr = ["http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg","http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg"]
         do {
         let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor : nil, create: true)
         let fileUrl = documentDirectory.appendingPathComponent("recette").appendingPathExtension("sqlite3")
@@ -38,11 +41,15 @@ class ListeRecetteViewController: UITableViewController {
             print("Recette: \(recette[self.id]), Titre : \(recette[self.titre]), Etapes : \(recette[self.etapes]), Photo : \(recette[self.photo])")
             recettesSize = recettesSize + 1
             print("Recette size: \(recettesSize)")
+            recetteNameArr.append(recette[self.titre])
+            print("NSARRAY \(recetteNameArr[0])")
+
             }
         }
         catch {
             print(error)
         }
+                    print("NSARRAY \(recetteNameArr[1])")
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,31 +71,22 @@ class ListeRecetteViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row selected: \(indexPath.row)")
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifiantRecetteCellule, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         print("Avant definition myVC")
         let myVC = storyboard?.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
         print("Apres definition myVC")
-        myVC.stringPassed = (cell.textLabel?.text)!
+        myVC.stringPassed = (recetteNameArr[indexPath.row])
+        myVC.theImagePassed = (imageArr[indexPath.row])
+        print("Cell : \(recetteNameArr[indexPath.row])")
         //self.present(myVC, animated: true, completion: nil)
         navigationController?.pushViewController(myVC, animated: true)
         print("Done")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // Get the index path from the cell that was tapped
-        let indexPath = tableView.indexPathForSelectedRow
-        // Get the Row of the Index Path and set as index
-        let index = indexPath?.row
-        // Get in touch with the DetailViewController
-        let detailViewController = segue.destination as! DetailTestViewController
-        // Pass on the data to the Detail ViewController by setting it's indexPathRow value
-        detailViewController.detailLabel = indexPath?.row
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifiantRecetteCellule, for: indexPath)
-        do {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        /*do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor : nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent("recette").appendingPathExtension("sqlite3")
             let database = try Connection(fileUrl.path)
@@ -104,11 +102,13 @@ class ListeRecetteViewController: UITableViewController {
         catch{
             print(error)
         }
-        cell.textLabel?.text   =   "\(arrayRecette[indexPath.row].titre)"
+        cell.intituleRecette.text! =   "\(arrayRecette[indexPath.row].titre)"*/
+        cell.intituleRecette.text! = recetteNameArr[indexPath.row] as! String
         let session = URLSession(configuration: .default)
         
         //creating a dataTask
-        let getImageFromUrl = session.dataTask(with: URL_IMAGE!) { (data, response, error) in
+        let URLRECETTE = URL(string: imageArr[indexPath.row] as! String)
+        let getImageFromUrl = session.dataTask(with: URLRECETTE!) { (data, response, error) in
             
             //if there is any error
             if let e = error {
@@ -127,7 +127,7 @@ class ListeRecetteViewController: UITableViewController {
                         
                         DispatchQueue.main.async {
                             //displaying the image
-                            cell.imageView?.image = image
+                            cell.photoRecette.image = image
                         }
                     } else {
                         print("Image file is currupted")

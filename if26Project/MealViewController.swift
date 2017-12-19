@@ -10,16 +10,20 @@ import UIKit
 
 class MealViewController: UIViewController {
 
+    @IBOutlet weak var intituleRecette: UILabel!
+    @IBOutlet weak var photoRecette: UIImageView!
+    @IBOutlet weak var etapesRecette: UILabel!
+    
     var stringPassed = ""
+    var theImagePassed = ""
     let URL_IMAGE = URL(string: "http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg")
     
-    @IBOutlet weak var titreRecette: UILabel!
-    @IBOutlet weak var textEtapes: UILabel!
-    @IBOutlet weak var imageMeal: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titreRecette.text = stringPassed
+        print("String passed \(stringPassed) ")
+        intituleRecette.text = stringPassed
+        let URLTEST = URL(string: theImagePassed)
         let session = URLSession(configuration: .default)
         
         //creating a dataTask
@@ -42,7 +46,7 @@ class MealViewController: UIViewController {
                         
                         DispatchQueue.main.async {
                             //displaying the image
-                            self.imageMeal.image = image
+                            self.photoRecette.image = image
                         }   
                     } else {
                         print("Image file is currupted")
