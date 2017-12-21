@@ -1,15 +1,15 @@
 //
-//  SQLiteViewController.swift
+//  SqliteClass.swift
 //  if26Project
 //
-//  Created by if26-grp2 on 30/11/2017.
+//  Created by if26-grp2 on 21/12/2017.
 //  Copyright © 2017 if26-grp2. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import SQLite
 
-class SQLiteViewController: UIViewController {
+public class SqliteClass  {
 
     var database : Connection!
     
@@ -19,8 +19,8 @@ class SQLiteViewController: UIViewController {
     let titre = Expression<String>("titre")
     let photo = Expression<String>("photo")
     let etapes = Expression<String>("etapes")
-
-
+    
+    
     //Table link
     let linkTable = Table("linkTable")
     let idRecette = Expression<Int>("idRecette")
@@ -36,24 +36,23 @@ class SQLiteViewController: UIViewController {
     let idfrigo = Expression<Int>("id")
     let ingredientFrigo = Expression<String>("ingredient")
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        do {
-            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor : nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent("recette").appendingPathExtension("sqlite3")
-            let database = try Connection(fileUrl.path)
-            self.database = database
-            //instanciationBase()
+    func ConnectionDB()
+    {
+        do{
+    let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor : nil, create: true)
+    let fileUrl = documentDirectory.appendingPathComponent("recette").appendingPathExtension("sqlite3")
+    let database = try Connection(fileUrl.path)
+    self.database = database
         }
-        catch {
+    catch{
             print(error)
         }
     }
+
     
     func instanciationBase() {
         print("Dans l'instanciation")
+        ConnectionDB()
         addRecette(id: 1, titre: "Boeuf bourguignon", etapes: "Tout cuire à feu doux", photo: "http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg")
         addRecette(id: 2, titre: "Poulet Curry", etapes: "Tout Mijoter ensemble", photo: "http://static.cuisineaz.com/610x610/i1494-curry-de-poulet-a-la-noix-de-coco.jpg")
         
@@ -66,7 +65,7 @@ class SQLiteViewController: UIViewController {
         addIngredient(id: 7, ingredient: "Carotte")
         addIngredient(id: 8, ingredient: "Boeuf")
         addIngredient(id: 9, ingredient: "Lardon")
-
+        
         addLink(idRecette: 1, idIng: 1)
         addLink(idRecette: 1, idIng: 2)
         addLink(idRecette: 1, idIng: 3)
@@ -76,12 +75,13 @@ class SQLiteViewController: UIViewController {
         addLink(idRecette: 1, idIng: 7)
         addLink(idRecette: 1, idIng: 8)
         addLink(idRecette: 1, idIng: 9)
-
+        
         print("C'est fait")
-
+        
     }
     
-    @IBAction func createFrigoTable(_ sender: UIButton) {
+func createFrigoTable() {
+    ConnectionDB()
         print("Asking to create FRIGO TABLE")
         
         let createTable = self.frigoTable.create { (table) in
@@ -97,7 +97,8 @@ class SQLiteViewController: UIViewController {
         }
     }
     
-    @IBAction func createLinkTable(_ sender: UIButton) {
+func createLinkTable() {
+    ConnectionDB()
         print("Asking to create Link table")
         
         let createTable = self.linkTable.create { (table) in
@@ -107,7 +108,7 @@ class SQLiteViewController: UIViewController {
             table.foreignKey(self.idRecette, references: recetteTable, id)
             table.foreignKey(self.idIngredient, references: ingredientTable, idIng)
         }
-
+        
         
         do {
             try self.database.run(createTable)
@@ -116,10 +117,11 @@ class SQLiteViewController: UIViewController {
         catch {
             print(error)
         }
-
+        
     }
     
     func addRecette(id: Int, titre: String, etapes: String, photo: String){
+        ConnectionDB()
         let insertRecette = self.recetteTable.insert(self.id <- id, self.titre <-  titre, self.etapes <- etapes, self.photo <- photo)
         do {
             try database.run(insertRecette)
@@ -131,7 +133,8 @@ class SQLiteViewController: UIViewController {
     }
     
     func addIngredient(id: Int, ingredient: String){
-            let insertUser  = self.ingredientTable.insert(self.idIng <- id, self.titreIng <-  ingredient)
+        ConnectionDB()
+        let insertUser  = self.ingredientTable.insert(self.idIng <- id, self.titreIng <-  ingredient)
         do {
             try self.database.run(insertUser)
             print("Ingredient inserted successfully")
@@ -142,6 +145,7 @@ class SQLiteViewController: UIViewController {
     }
     
     func addLink(idRecette: Int, idIng: Int){
+        ConnectionDB()
         let insertLink = self.linkTable.insert(self.idRecette <- idRecette, self.idIngredient <- idIng  )
         do {
             try self.database.run(insertLink)
@@ -152,37 +156,10 @@ class SQLiteViewController: UIViewController {
         }
     }
     
-    @IBAction func insertRecette(_ sender: UIButton) {
-        print   ("Bouton   insert")
-        let   alert   =   UIAlertController(title:   "Insert   Recette",   message:   nil,   preferredStyle:   .alert)
-        alert.addTextField   {   (tf)   in   tf.placeholder   =   "Titre recette"}
-        alert.addTextField   {   (tf)   in   tf.placeholder   =   "Etapes"}
-        alert.addTextField   {   (tf)   in   tf.placeholder   =   "photoUrl"}
-        let   action   =   UIAlertAction(title:   "Submit",   style:   .default)   {   (_)   in
-            guard let   name   =   alert.textFields?.first?.text,
-                let   email   = alert.textFields![1].text,
-                let photo =   alert.textFields?.last?.text
-                else   {   return   }
-            print   (name)
-            print   (email)
-            print   (photo)
-            
-            let insertUser  = self.recetteTable.insert(self.titre <- name, self.etapes <-  email, self.photo <- photo)
-            
-            do {
-                try self.database.run(insertUser)
-                print("Recette inserted")
-            }
-            catch {
-                print(error)
-            }
-        }
-        alert.addAction(action)
-        present(alert,   animated:   true,   completion:   nil)
-    }
     
-    @IBAction func listRecette(_ sender: UIButton) {
-    print   ("Bouton   LIST")
+func listRecette() {
+    ConnectionDB()
+        print   ("Bouton   LIST")
         do {
             let users = try self.database.prepare(self.recetteTable)
             for user in users{
@@ -202,7 +179,8 @@ class SQLiteViewController: UIViewController {
         }
     }
     
-    @IBAction func createIngredientTable(_ sender: UIButton) {
+ func createIngredientTable() {
+    ConnectionDB()
         print("Asking to create Ingredient table")
         
         let createTable = self.ingredientTable.create { (table) in
@@ -217,14 +195,12 @@ class SQLiteViewController: UIViewController {
         catch {
             print(error)
         }
+        
+    }
 
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    @IBAction func createTable(_ sender: UIButton) {
+func createTable() {
+    ConnectionDB()
         print("Asking to create table")
         
         let createTable = self.recetteTable.create { (table) in
@@ -244,7 +220,8 @@ class SQLiteViewController: UIViewController {
     }
     
     func getIdRecetteByName(intituleRecette: String) -> Recette{
-     
+        ConnectionDB()
+        
         var recetteNew : Recette = Recette.init(id: 0, titre: "", etapes: "", photo: "")
         let getRecette = recetteTable.where(titre == intituleRecette)
         do {
@@ -259,13 +236,14 @@ class SQLiteViewController: UIViewController {
             
         }
         print("RecetteNew \(recetteNew)")
-
+        
         return recetteNew
-    
-
+        
+        
     }
     
     func getIngredientByIdRecette(idR: Int) -> [Ingredient] {
+        ConnectionDB()
         var ing : [Ingredient] = []
         do {
             let testTable = linkTable.join(recetteTable, on: idRecette == id)
@@ -276,24 +254,14 @@ class SQLiteViewController: UIViewController {
                 print("ingredientR \(ingredientR.descriptor)")
                 ing.append(ingredientR)
                 print("ingredient array \(ing[0].descriptor)")
-
+                
             }
-        
+            
         }
-         catch{
-         print(error)
-         
-         }
+        catch{
+            print(error)
+            
+        }
         return ing
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

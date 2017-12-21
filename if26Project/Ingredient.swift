@@ -20,4 +20,8 @@ public class Ingredient  {
     public var descriptor: String {
         return "Ingredient(\(id),\(ingredient))"
     }
+    
+    public var descriptorForMeal: String {
+        return "\(id) - \(ingredient)"
+    }
 }

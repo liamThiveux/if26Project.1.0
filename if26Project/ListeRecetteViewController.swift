@@ -14,6 +14,8 @@ class ListeRecetteViewController: UITableViewController {
     var database : Connection!
     var recetteNameArr: [String] = []
     var imageArr: [String] = []
+    var etapesArr: [String] = []
+    var ingArr: [Ingredient] = []
 
     // Table recette
     let recetteTable = Table("recettes")
@@ -23,6 +25,21 @@ class ListeRecetteViewController: UITableViewController {
     let etapes = Expression<String>("etapes")
     var recettesSize : Int = 0
     var   arrayRecette:   [Recette]   =   []
+
+    //Table link
+    let linkTable = Table("linkTable")
+    let idRecette = Expression<Int>("idRecette")
+    let idIngredient = Expression<Int>("idIng")
+    
+    //Table ingrédient
+    let ingredientTable = Table("ingredientsRecette")
+    let idIng = Expression<Int>("id")
+    let titreIng = Expression<String>("ingredient")
+    
+    //Table ingrédientPossede
+    let frigoTable = Table("frigo")
+    let idfrigo = Expression<Int>("id")
+    let ingredientFrigo = Expression<String>("ingredient")
     
     let identifiantRecetteCellule = "celulleRecette"
 
@@ -30,11 +47,11 @@ class ListeRecetteViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageArr = ["http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg","http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg"]
+        imageArr = ["http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg","http://static.cuisineaz.com/610x610/i1494-curry-de-poulet-a-la-noix-de-coco.jpg"]
         do {
         let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor : nil, create: true)
         let fileUrl = documentDirectory.appendingPathComponent("recette").appendingPathExtension("sqlite3")
-        let database = try Connection(fileUrl.path)
+        let database = try Connection(  fileUrl.path)
         self.database = database
         let recettes = try self.database.prepare(recetteTable)
         for recette in recettes{
@@ -42,14 +59,19 @@ class ListeRecetteViewController: UITableViewController {
             recettesSize = recettesSize + 1
             print("Recette size: \(recettesSize)")
             recetteNameArr.append(recette[self.titre])
-            print("NSARRAY \(recetteNameArr[0])")
-
+            etapesArr.append(recette[self.etapes])
+          //imageArr.append(recette[self.photo])
             }
         }
         catch {
             print(error)
         }
-                    print("NSARRAY \(recetteNameArr[1])")
+        let getRecette : Recette = getIdRecetteByName(intituleRecette: "Boeuf bourguignon")
+        print("Retour fonction getId \(getRecette.descriptor)")
+        let getIngredientRecette = getIngredientByIdRecette(idR: 1)
+        for ing in getIngredientRecette{
+            print("getIngredient by Id \(ing.descriptor)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,12 +94,15 @@ class ListeRecetteViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row selected: \(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        print("Avant definition myVC")
         let myVC = storyboard?.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
-        print("Apres definition myVC")
+        let ingR = getIngredientByIdRecette(idR: getIdRecetteByName(intituleRecette: recetteNameArr[indexPath.row]).id)
+        print("IngRR id \(getIdRecetteByName(intituleRecette: recetteNameArr[indexPath.row]).id)")
+
+        print("IngRR \(ingR)")
+        myVC.ingPassed = ingR
         myVC.stringPassed = (recetteNameArr[indexPath.row])
         myVC.theImagePassed = (imageArr[indexPath.row])
-        print("Cell : \(recetteNameArr[indexPath.row])")
+        myVC.etapesPassed = (etapesArr[indexPath.row])
         //self.present(myVC, animated: true, completion: nil)
         navigationController?.pushViewController(myVC, animated: true)
         print("Done")
@@ -190,5 +215,45 @@ class ListeRecetteViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func getIdRecetteByName(intituleRecette: String) -> Recette{
+        var recetteNew : Recette = Recette.init(id: 0, titre: "", etapes: "", photo: "")
+        let getRecette = recetteTable.where(titre == intituleRecette)
+        do {
+            let testR = try self.database.prepare(getRecette)
+            print("testR \(testR)")
+            for test in testR {
+                recetteNew = Recette.init(id: test[self.id], titre: intituleRecette, etapes: test[self.etapes], photo: test[self.photo])
+            }
+        }
+        catch{
+            print(error)
+            
+        }
+        print("RecetteNew \(recetteNew)")
 
+        return recetteNew
+        
+        
+    }
+
+    func getIngredientByIdRecette(idR: Int) -> [Ingredient] {
+        var ing : [Ingredient] = []
+        do {
+            let testTable = linkTable.join(ingredientTable, on: linkTable[idIngredient] == ingredientTable[idIng]).filter(linkTable[idRecette] == idR)
+            print("Join sans soucis")
+            let testIng = try self.database.prepare(testTable)
+            print("prepared sans soucis")
+            for tIng in testIng{
+                let ingredientR : Ingredient = Ingredient.init(id: tIng[self.idIng], ingredient: tIng[self.titreIng])
+                print("ingredientR \(ingredientR.descriptor)")
+                ing.append(ingredientR)
+            }
+            
+        }
+        catch{
+            print(error)
+            
+        }
+        return ing
+    }
 }
