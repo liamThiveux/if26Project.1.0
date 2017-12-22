@@ -50,6 +50,7 @@ class SQLiteViewController: UIViewController {
         catch {
             print(error)
         }
+        instanciationBase()
     }
     
     func instanciationBase() {
@@ -59,15 +60,22 @@ class SQLiteViewController: UIViewController {
         
         addIngredient(id: 1, ingredient: "Sel")
         addIngredient(id: 2, ingredient: "Poivre")
-        addIngredient(id: 3, ingredient: "Oignon")
+        /*addIngredient(id: 3, ingredient: "Oignon")
         addIngredient(id: 4, ingredient: "Beurre")
         addIngredient(id: 5, ingredient: "Bouquet garni")
         addIngredient(id: 6, ingredient: "Vin rouge")
         addIngredient(id: 7, ingredient: "Carotte")
         addIngredient(id: 8, ingredient: "Boeuf")
-        addIngredient(id: 9, ingredient: "Lardon")
+        addIngredient(id: 9, ingredient: "Lardon")*/
+        addIngredient(id: 10, ingredient: "Blanc de poulet")
+        addIngredient(id: 11, ingredient: "Crème fraiche")
+        addIngredient(id: 12, ingredient: "Curry")
+        addIngredient(id: 13, ingredient: "Cumin")
+        addIngredient(id: 14, ingredient: "Riz thai")
+        addIngredient(id: 15, ingredient: "Piment")
 
-        addLink(idRecette: 1, idIng: 1)
+
+        /*addLink(idRecette: 1, idIng: 1)
         addLink(idRecette: 1, idIng: 2)
         addLink(idRecette: 1, idIng: 3)
         addLink(idRecette: 1, idIng: 4)
@@ -76,7 +84,16 @@ class SQLiteViewController: UIViewController {
         addLink(idRecette: 1, idIng: 7)
         addLink(idRecette: 1, idIng: 8)
         addLink(idRecette: 1, idIng: 9)
+        addLink(idRecette: 2, idIng: 1)
+        addLink(idRecette: 2, idIng: 2)*/
+        addLink(idRecette: 2, idIng: 10)
+        addLink(idRecette: 2, idIng: 11)
+        addLink(idRecette: 2, idIng: 12)
+        addLink(idRecette: 2, idIng: 13)
+        addLink(idRecette: 2, idIng: 14)
+        addLink(idRecette: 2, idIng: 15)
 
+        
         print("C'est fait")
 
     }

@@ -12,12 +12,13 @@ import SQLite
 
 class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    @IBOutlet weak var ingredientField: UITextField!
     @IBOutlet weak var frigoPicker: UIPickerView!
     @IBOutlet weak var ingredientLabel: UILabel!
     var values : [String] = []
     var database : Connection!
     var yPosIng : Int = 360
+    var nbLabel : Int = 0
+    var i = 1
 
     //Table ingrédient
     let ingredientTable = Table("ingredientsRecette")
@@ -29,10 +30,20 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     let idfrigo = Expression<Int>("id")
     let ingredientFrigo = Expression<String>("ingredient")
     
-    /*@IBAction func sendIngDB(_ sender: UIButton) {
-     for (nbLabel)
-        addIngredientFrigo(id: Int, ingredient: <#T##String#>)
-    }*/
+    
+    @IBAction func sendIngDB(_ sender: UIButton) {
+        print("Dans le bouton send")
+        let labels = self.view.subviews.flatMap { $0 as? UILabel }
+        let size = labels.count
+        var ingredientsToAddDB : [Ingredient] = []
+        for label in labels {
+            let ingredientToAdd = getIdIngByName(name: label.text!)
+            ingredientsToAddDB.append(ingredientToAdd)
+        }
+        for ingredientDB in ingredientsToAddDB {
+            addIngredientFrigo(id: ingredientDB.id, ingredient: ingredientDB.ingredient)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +75,19 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 label.center = CGPoint(x: 120, y: yPos)
                 label.textAlignment = .left
                 label.text = "\(ingFrigo[self.ingredientFrigo])"
+                label.tag = i
+                i = i+1
+
+                let buttonDel = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+                buttonDel.setTitle("Supprimer", for: .normal)
+                buttonDel.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+                buttonDel.center = CGPoint(x: 300, y: yPos)
+                buttonDel.tag = i
+                i = i+1
                 yPos = yPos + 20;
                 self.view.addSubview(label)
+                self.view.addSubview(buttonDel)
+
             }
         }
         catch{
@@ -73,6 +95,18 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
         //var test : SqliteClass?
         //test?.listRecette()
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        print("Button tapped")
+        print("Sender tag \(sender.tag)")
+        var labelText = ""
+        if let theLabel = self.view.viewWithTag(sender.tag - 1) as? UILabel
+        {
+            labelText = (theLabel.text as! String)
+        }
+        let ingToDel = getIdIngByName(name: labelText)
+        deleteIng(idDel: ingToDel.id)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -91,20 +125,13 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     //Clic sur le pickerView
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.ingredientField.text = self.values[row]
         let labelIng = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
         labelIng.center = CGPoint(x: 120, y:yPosIng)
         labelIng.textAlignment = .left
         labelIng.text = "\(self.values[row])"
         yPosIng = yPosIng + 20;
         self.view.addSubview(labelIng)
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if textField == self.ingredientField {
-        self.frigoPicker.isHidden = false
-        textField.endEditing(true)
-        }
+        nbLabel = nbLabel+1
     }
 
     func addIngredientFrigo(id: Int, ingredient: String){
@@ -115,6 +142,24 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 catch {
                     print(error)
             }
+    }
+    
+    func getIdIngByName(name: String) -> Ingredient{
+        var ingNew : Ingredient = Ingredient.init(id: 0, ingredient: "")
+        let getIng = ingredientTable.where(titreIng == name)
+        do {
+            let testR = try self.database.prepare(getIng)
+            print("testR \(testR)")
+            for test in testR {
+                ingNew = Ingredient.init(id: test[self.idIng], ingredient: test[self.titreIng])
+            }
+        }
+        catch{
+            print(error)
+            
+        }
+        print("RecetteNew \(ingNew)")
+        return ingNew
     }
 
     func course(){
@@ -145,6 +190,18 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             print(error)
         }
     }
+    func deleteIng(idDel : Int){
+    print   ("Bouton   DELETE")
+        let ingToDel = self.frigoTable.filter(self.idfrigo == idDel)
+        let deleteIng = ingToDel.delete()
+        do {
+            try self.database.run(deleteIng)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
 }
 
 
