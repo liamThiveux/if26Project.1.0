@@ -92,6 +92,7 @@ class MealViewController: UIViewController{
         }
         else {
             let listIdPossible = getIdRecettePossible()
+            if (listIdPossible.count > 0){
             let size = UInt32(listIdPossible.count)
             let choix = Int(arc4random_uniform(size))
             print("Nombre de choix : \(choix)")
@@ -110,10 +111,9 @@ class MealViewController: UIViewController{
                 yPos = yPos + 20;
                 self.view.addSubview(label)
             }
-            /*let URLTEST = URL(string: theImagePassed)
-            if (theImagePassed != ""){
-                URL_IMAGE = URLTEST
-            }*/
+            let URLRANDOM = URL(string: recetteDuJour.photo)
+                URL_IMAGE = URLRANDOM
+            }
         }
         print("url image : \(URL_IMAGE)")
         let session = URLSession(configuration: .default)

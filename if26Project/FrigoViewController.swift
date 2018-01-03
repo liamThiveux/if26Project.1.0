@@ -105,8 +105,14 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         {
             labelText = (theLabel.text as! String)
         }
+        print("label text \(labelText)")
         let ingToDel = getIdIngByName(name: labelText)
+        print("\(ingToDel.descriptor)")
         deleteIng(idDel: ingToDel.id)
+        let labelDel = self.view.viewWithTag(sender.tag - 1) as? UILabel
+        labelDel?.removeFromSuperview()
+        sender.removeFromSuperview()
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -55,18 +55,76 @@ class SQLiteViewController: UIViewController {
     
     func instanciationBase() {
         print("Dans l'instanciation")
+        
+        let createTable = self.recetteTable.create { (table) in
+            table.column(self.id, primaryKey: true)
+            table.column(self.titre, unique: true)
+            table.column(self.photo)
+            table.column(self.etapes)
+        }
+        
+        do {
+            try self.database.run(createTable)
+            print("successfully created")
+        }
+        catch {
+            print(error)
+        }
+        
+        let createFrigoTable = self.frigoTable.create { (table) in
+            table.column(self.idfrigo, primaryKey: true)
+            table.column(self.ingredientFrigo, unique : true)
+        }
+        do {
+            try self.database.run(createFrigoTable)
+            print("successfully created")
+        }
+        catch {
+            print(error)
+        }
+        
+        let createLinkTable = self.linkTable.create { (table) in
+            table.column(self.idRecette)
+            table.column(self.idIngredient)
+            table.primaryKey(self.idRecette, self.idIngredient)
+            table.foreignKey(self.idRecette, references: recetteTable, id)
+            table.foreignKey(self.idIngredient, references: ingredientTable, idIng)
+        }
+        
+        
+        do {
+            try self.database.run(createLinkTable)
+            print("successfully created")
+        }
+        catch {
+            print(error)
+        }
+        
+        let createIngTable = self.ingredientTable.create { (table) in
+            table.column(self.idIng, primaryKey: true)
+            table.column(self.titreIng, unique: true)
+        }
+        
+        do {
+            try self.database.run(createIngTable)
+            print("successfully created")
+        }
+        catch {
+            print(error)
+        }
+        
         addRecette(id: 1, titre: "Boeuf bourguignon", etapes: "Tout cuire à feu doux", photo: "http://img-3.journaldesfemmes.com/rU_bebejJYXENTWkWfEkrgwFcB0=/750x/smart/d6db2baa728b47f8adbf30b99a957dc0/recipe-jdf/10002051.jpg")
         addRecette(id: 2, titre: "Poulet Curry", etapes: "Tout Mijoter ensemble", photo: "http://static.cuisineaz.com/610x610/i1494-curry-de-poulet-a-la-noix-de-coco.jpg")
         
         addIngredient(id: 1, ingredient: "Sel")
         addIngredient(id: 2, ingredient: "Poivre")
-        /*addIngredient(id: 3, ingredient: "Oignon")
+        addIngredient(id: 3, ingredient: "Oignon")
         addIngredient(id: 4, ingredient: "Beurre")
         addIngredient(id: 5, ingredient: "Bouquet garni")
         addIngredient(id: 6, ingredient: "Vin rouge")
         addIngredient(id: 7, ingredient: "Carotte")
         addIngredient(id: 8, ingredient: "Boeuf")
-        addIngredient(id: 9, ingredient: "Lardon")*/
+        addIngredient(id: 9, ingredient: "Lardon")
         addIngredient(id: 10, ingredient: "Blanc de poulet")
         addIngredient(id: 11, ingredient: "Crème fraiche")
         addIngredient(id: 12, ingredient: "Curry")
@@ -75,7 +133,7 @@ class SQLiteViewController: UIViewController {
         addIngredient(id: 15, ingredient: "Piment")
 
 
-        /*addLink(idRecette: 1, idIng: 1)
+        addLink(idRecette: 1, idIng: 1)
         addLink(idRecette: 1, idIng: 2)
         addLink(idRecette: 1, idIng: 3)
         addLink(idRecette: 1, idIng: 4)
@@ -85,7 +143,7 @@ class SQLiteViewController: UIViewController {
         addLink(idRecette: 1, idIng: 8)
         addLink(idRecette: 1, idIng: 9)
         addLink(idRecette: 2, idIng: 1)
-        addLink(idRecette: 2, idIng: 2)*/
+        addLink(idRecette: 2, idIng: 2)
         addLink(idRecette: 2, idIng: 10)
         addLink(idRecette: 2, idIng: 11)
         addLink(idRecette: 2, idIng: 12)
