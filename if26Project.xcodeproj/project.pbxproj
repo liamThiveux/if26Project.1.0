@@ -13,6 +13,7 @@
 		8852ED581FE96FA6002F9564 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852ED571FE96FA6002F9564 /* TableViewCell.swift */; };
 		885324371FE02CE300507F2E /* Recette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885324361FE02CE300507F2E /* Recette.swift */; };
 		8853243F1FE02CFA00507F2E /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853243E1FE02CFA00507F2E /* Ingredient.swift */; };
+		886CA3142003E3B900DFAADF /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886CA3132003E3B900DFAADF /* ContactViewController.swift */; };
 		88BA45EA1FEBF587008ED3F7 /* SqliteClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BA45E91FEBF587008ED3F7 /* SqliteClass.swift */; };
 		88BC6DC71FE80D9000A5A8F9 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC6DC61FE80D9000A5A8F9 /* MealViewController.swift */; };
 		88CCEDE51FCEDC1200255FDE /* ListeRecetteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCEDE41FCEDC1200255FDE /* ListeRecetteViewController.swift */; };
@@ -120,6 +121,7 @@
 		8852ED571FE96FA6002F9564 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		885324361FE02CE300507F2E /* Recette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recette.swift; sourceTree = "<group>"; };
 		8853243E1FE02CFA00507F2E /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		886CA3132003E3B900DFAADF /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		88BA45E91FEBF587008ED3F7 /* SqliteClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteClass.swift; sourceTree = "<group>"; };
 		88BC6DC61FE80D9000A5A8F9 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		88CCEDE41FCEDC1200255FDE /* ListeRecetteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRecetteViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				88BC6DC61FE80D9000A5A8F9 /* MealViewController.swift */,
 				8852ED571FE96FA6002F9564 /* TableViewCell.swift */,
 				88BA45E91FEBF587008ED3F7 /* SqliteClass.swift */,
+				886CA3132003E3B900DFAADF /* ContactViewController.swift */,
 			);
 			path = if26Project;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				88BC6DC71FE80D9000A5A8F9 /* MealViewController.swift in Sources */,
 				88F7423D1FCC5BAA00FAB1E4 /* ViewController.swift in Sources */,
 				8853243F1FE02CFA00507F2E /* Ingredient.swift in Sources */,
+				886CA3142003E3B900DFAADF /* ContactViewController.swift in Sources */,
 				88F7423B1FCC5BAA00FAB1E4 /* AppDelegate.swift in Sources */,
 				8852ED581FE96FA6002F9564 /* TableViewCell.swift in Sources */,
 				88CCEDE71FCEDD6100255FDE /* FrigoViewController.swift in Sources */,
