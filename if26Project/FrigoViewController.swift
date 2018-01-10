@@ -12,7 +12,6 @@ import SQLite
 
 class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    @IBOutlet weak var scroll: UIView!
     @IBOutlet weak var frigoPicker: UIPickerView!
     @IBOutlet weak var ingredientLabel: UILabel!
     @IBOutlet weak var vousAjoutez: UILabel!
@@ -35,8 +34,9 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBAction func sendIngDB(_ sender: UIButton) {
         print("Dans le bouton send")
-        let labels = self.scroll.subviews.flatMap { $0 as? UILabel }
+        let labels = self.view.subviews.flatMap { $0 as? UILabel }
         let size = labels.count
+        print("nb label : \(size)")
         var ingredientsToAddDB : [Ingredient] = []
         for label in labels {
             let ingredientToAdd = getIdIngByName(name: label.text!)
@@ -81,17 +81,18 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 label.textAlignment = .left
                 label.text = "\(ingFrigo[self.ingredientFrigo])"
                 label.tag = i
+                print("label tag + nom \(label.tag) - \(label.text)")
                 i = i+1
-
-                let buttonDel = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+                self.view.addSubview(label)
+                let buttonDel = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 30))
                 buttonDel.setTitle("Supprimer", for: .normal)
                 buttonDel.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 buttonDel.center = CGPoint(x: 300, y: yPos)
                 buttonDel.tag = i
                 i = i+1
                 yPos = yPos + 20;
-                self.scroll.addSubview(label)
-                self.scroll.addSubview(buttonDel)
+                print("bouton to add : \(buttonDel.tag)")
+                self.view.addSubview(buttonDel)
 
             }
             yPos = yPos + 20
@@ -111,7 +112,7 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         print("Button tapped")
         print("Sender tag \(sender.tag)")
         var labelText = ""
-        let ingToFind = sender.tag - 2
+        let ingToFind = sender.tag-1
         if let theLabel = self.view.viewWithTag(ingToFind) as? UILabel
         {
             labelText = (theLabel.text as! String)
@@ -147,7 +148,7 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         labelIng.textAlignment = .left
         labelIng.text = "\(self.values[row])"
         yPosIng = yPosIng + 20;
-        self.scroll.addSubview(labelIng)
+        self.view.addSubview(labelIng)
         nbLabel = nbLabel+1
     }
 

@@ -197,7 +197,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evw-d5-uLQ">
                                 <rect key="frame" x="22" y="466" width="328" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -274,10 +274,10 @@
             </objects>
             <point key="canvasLocation" x="-146" y="1460"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact View Controller-->
         <scene sceneID="8M1-MG-YPd">
             <objects>
-                <viewController id="uYQ-ls-X9n" sceneMemberID="viewController">
+                <viewController id="uYQ-ls-X9n" customClass="ContactViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uzK-KV-uHf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -321,7 +321,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Votre commentaire" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lFX-E4-1G5">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lFX-E4-1G5">
                                 <rect key="frame" x="3" y="179" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -346,18 +346,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fblogo" translatesAutoresizingMaskIntoConstraints="NO" id="N3i-0X-jS5">
-                                <rect key="frame" x="3" y="315" width="119" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="twitterlogo" translatesAutoresizingMaskIntoConstraints="NO" id="SCY-9o-sGs">
-                                <rect key="frame" x="131" y="315" width="118" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="instalogo" translatesAutoresizingMaskIntoConstraints="NO" id="428-i9-j4W">
-                                <rect key="frame" x="264" y="328" width="102" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rejoignez nous sur les réseaux" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLI-CZ-okI">
                                 <rect key="frame" x="75" y="482" width="247" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -365,6 +353,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oE5-rA-TxB">
+                                <rect key="frame" x="113" y="314" width="146" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="twitterlogo"/>
+                                <connections>
+                                    <action selector="twitter:" destination="uYQ-ls-X9n" eventType="touchUpInside" id="855-UO-qaJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4RL-BE-K24">
+                                <rect key="frame" x="265" y="328" width="94" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="instalogo"/>
+                                <connections>
+                                    <action selector="insta:" destination="uYQ-ls-X9n" eventType="touchUpInside" id="7ag-3A-DSj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IK5-b2-3gu">
+                                <rect key="frame" x="-4" y="318" width="132" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="fblogo"/>
+                                <connections>
+                                    <action selector="facebook:" destination="uYQ-ls-X9n" eventType="touchUpInside" id="p0P-bt-R6Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="l3W-oR-PPb"/>
@@ -372,99 +384,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u3O-zh-ZhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="1460"/>
+            <point key="canvasLocation" x="564" y="1459.52023988006"/>
         </scene>
         <!--Frigo View Controller-->
         <scene sceneID="J2C-sO-gqx">
             <objects>
                 <viewController id="6ti-fd-ny7" customClass="FrigoViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eYf-Ne-gJk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yey-5L-x4x">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-qZ-ScS">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="833"/>
-                                        <subviews>
-                                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeI-A3-GIQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <items>
-                                                    <navigationItem title="Votre Frigo" id="U8k-BM-VAW">
-                                                        <barButtonItem key="leftBarButtonItem" style="plain" id="HC1-xN-RdQ">
-                                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="74z-qg-e6Q">
-                                                                <rect key="frame" x="16" y="7" width="34" height="30"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Back"/>
-                                                                <connections>
-                                                                    <segue destination="Hbd-xV-dsy" kind="show" id="Cmc-6e-dr5"/>
-                                                                </connections>
-                                                            </button>
-                                                        </barButtonItem>
-                                                    </navigationItem>
-                                                </items>
-                                            </navigationBar>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Votre Frigo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sx-n2-QMx">
-                                                <rect key="frame" x="126" y="212" width="122" height="66"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="66" id="J4c-Kj-ORN"/>
-                                                    <constraint firstAttribute="width" constant="122" id="fK0-Z0-WkL"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Présent dans votre frigo :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-IJ-nYF">
-                                                <rect key="frame" x="0.0" y="84" width="193" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Présent dans votre frigo :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-IJ-nYF">
+                                <rect key="frame" x="16" y="108" width="193" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-RN-HIE">
+                                <rect key="frame" x="0.0" y="500" width="375" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Votre Frigo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sx-n2-QMx">
+                                <rect key="frame" x="119" y="44" width="122" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ce que vous ajoutez :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fp-xN-enK">
+                                <rect key="frame" x="16" y="359" width="199" height="25"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pkc-rQ-ewn">
+                                <rect key="frame" x="140" y="392" width="235" height="137"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pickerView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeI-A3-GIQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Votre Frigo" id="U8k-BM-VAW">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="HC1-xN-RdQ">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="74z-qg-e6Q">
+                                                <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-RN-HIE">
-                                                <rect key="frame" x="0.0" y="416" width="375" height="0.0"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ce que vous ajoutez :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fp-xN-enK">
-                                                <rect key="frame" x="8" y="474" width="199" height="25"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pkc-rQ-ewn">
-                                                <rect key="frame" x="140" y="507" width="235" height="137"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </pickerView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="1Sx-n2-QMx" firstAttribute="top" secondItem="lHb-qZ-ScS" secondAttribute="top" constant="212" id="06T-oq-6GC"/>
-                                            <constraint firstAttribute="height" constant="1000" id="qAl-W0-Bwm"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                        <size key="value" width="320" height="1000"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2H1-P9-kMR">
-                                <rect key="frame" x="0.0" y="965" width="375" height="35"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <segue destination="Hbd-xV-dsy" kind="show" id="Cmc-6e-dr5"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2H1-P9-kMR">
+                                <rect key="frame" x="0.0" y="632" width="375" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="By2-sJ-Bq2"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="Cgi-LQ-knI"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="L7q-6e-DqR"/>
-                                    <constraint firstAttribute="width" constant="375" id="scw-9Z-T2p"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Remplir le frigo">
                                     <color key="titleColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -476,28 +460,17 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.64481230489999997" blue="0.93978390440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="yey-5L-x4x" firstAttribute="trailing" secondItem="U08-SJ-4Cw" secondAttribute="trailing" id="9AO-VV-1Pn"/>
-                            <constraint firstItem="lHb-qZ-ScS" firstAttribute="width" secondItem="eYf-Ne-gJk" secondAttribute="width" id="V1x-rm-UlS"/>
-                            <constraint firstItem="yey-5L-x4x" firstAttribute="top" secondItem="eYf-Ne-gJk" secondAttribute="top" id="hX6-lz-HdS"/>
-                            <constraint firstItem="2H1-P9-kMR" firstAttribute="bottom" secondItem="U08-SJ-4Cw" secondAttribute="bottom" id="luc-zd-keL"/>
-                            <constraint firstItem="yey-5L-x4x" firstAttribute="bottom" secondItem="U08-SJ-4Cw" secondAttribute="bottom" id="qjL-NQ-J9v"/>
-                            <constraint firstItem="yey-5L-x4x" firstAttribute="leading" secondItem="U08-SJ-4Cw" secondAttribute="leading" id="t3m-Bd-qAk"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="U08-SJ-4Cw"/>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="frigoPicker" destination="Pkc-rQ-ewn" id="Fcb-3D-QQa"/>
                         <outlet property="ingredientLabel" destination="Cdx-RN-HIE" id="Unj-uY-475"/>
-                        <outlet property="scroll" destination="lHb-qZ-ScS" id="moW-mb-cxp"/>
                         <outlet property="vousAjoutez" destination="7fp-xN-enK" id="9Gu-RL-ed5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBt-6c-6Bn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1632.8" y="789.80509745127438"/>
+            <point key="canvasLocation" x="1625" y="1030"/>
         </scene>
         <!--Liste Recette View Controller-->
         <scene sceneID="ehL-74-ieN">
@@ -515,24 +488,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="186.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3L-7E-hs2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3L-7E-hs2">
                                             <rect key="frame" x="86" y="18" width="169" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cours3" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-fC-bGL">
-                                            <rect key="frame" x="91" y="76" width="137" height="92"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cours3" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-fC-bGL">
+                                            <rect key="frame" x="100" y="55" width="155" height="103"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="U3L-7E-hs2" secondAttribute="trailing" constant="78" id="7kg-R1-Rnd"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="SzG-fC-bGL" secondAttribute="trailing" constant="105" id="CaF-EY-KeC"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="SzG-fC-bGL" secondAttribute="bottom" constant="8" id="LTI-zq-ea6"/>
                                         <constraint firstItem="U3L-7E-hs2" firstAttribute="top" secondItem="y9u-V2-KEc" secondAttribute="topMargin" constant="7" id="T1g-i4-Eb5"/>
-                                        <constraint firstItem="SzG-fC-bGL" firstAttribute="leading" secondItem="y9u-V2-KEc" secondAttribute="leadingMargin" constant="75" id="cHD-83-Bdg"/>
                                         <constraint firstItem="U3L-7E-hs2" firstAttribute="leading" secondItem="y9u-V2-KEc" secondAttribute="leadingMargin" constant="70" id="dxh-g2-EvJ"/>
-                                        <constraint firstItem="SzG-fC-bGL" firstAttribute="top" secondItem="U3L-7E-hs2" secondAttribute="bottom" constant="37" id="kts-Yy-3rj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -597,6 +567,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ut8-QM-S7Y"/>
-        <segue reference="gOh-Sy-Jgk"/>
+        <segue reference="Phf-hG-Bso"/>
     </inferredMetricsTieBreakers>
 </document>

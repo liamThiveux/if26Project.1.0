@@ -72,18 +72,21 @@ class MealViewController: UIViewController{
         if (stringPassed != ""){
         print("ingPassed \(ingPassed)")
 
+        var i = 1
         for ing in ingPassed{
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
             label.center = CGPoint(x: 120, y: yPos)
             label.textAlignment = .left
-            label.text = "\(ing.descriptorForMeal)"
+            label.text = "\(i) - \(ing.ingredient)"
             yPos = yPos + 20;
             self.view.addSubview(label)
+            i = i+1
         }
         print("String passed \(stringPassed) ")
         intituleRecette.text = stringPassed
         print("Etapes passed \(etapesPassed) ")
         etapesRecette.text = etapesPassed
+        etapesRecette.center = CGPoint(x: 120, y: yPos)
         let URLTEST = URL(string: theImagePassed)
         if (theImagePassed != ""){
             URL_IMAGE = URLTEST
@@ -103,13 +106,15 @@ class MealViewController: UIViewController{
             intituleRecette.text = recetteDuJour.titre
             etapesRecette.text = recetteDuJour.etapes
             let ingredientRecette = getIngredientByIdRecette(idR: recetteDuJour.id)
+            var i = 1
             for ing in ingredientRecette {
                 let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
                 label.center = CGPoint(x: 120, y: yPos)
                 label.textAlignment = .left
-                label.text = "\(ing.descriptorForMeal)"
+                label.text = "\(i) - \(ing.ingredient)"
                 yPos = yPos + 20;
                 self.view.addSubview(label)
+                i = i+1
             }
             let URLRANDOM = URL(string: recetteDuJour.photo)
                 URL_IMAGE = URLRANDOM

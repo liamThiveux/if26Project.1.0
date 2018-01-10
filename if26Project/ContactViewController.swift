@@ -10,6 +10,24 @@ import UIKit
 
 class ContactViewController: UIViewController {
 
+
+
+    @IBAction func facebook(_ sender: UIButton) {
+    let url = URL(string: "https://www.facebook.com/liam.thiveux")
+        UIApplication.shared.open(url!, options: [:])
+}
+    
+
+    @IBAction func twitter(_ sender: UIButton) {
+        let url = URL(string: "https://twitter.com/thiveux")
+        UIApplication.shared.open(url!, options: [:])
+    }
+
+    @IBAction func insta(_ sender: UIButton) {
+    let url = URL(string: "https://www.instagram.com/liam.thiveux/")
+        UIApplication.shared.open(url!, options: [:])
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
