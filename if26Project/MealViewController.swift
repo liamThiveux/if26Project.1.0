@@ -14,7 +14,6 @@ class MealViewController: UIViewController{
     @IBOutlet weak var intituleRecette: UILabel!
     @IBOutlet weak var photoRecette: UIImageView!
     @IBOutlet weak var etapesRecette: UILabel!
-    @IBOutlet weak var ingRecette: UILabel!
     
     var database : Connection!
     var recetteNameArr: [String] = []
@@ -68,7 +67,7 @@ class MealViewController: UIViewController{
         catch {
             print(error)
         }
-        var yPos : Int = 330
+        var yPos : Int = 300
         if (stringPassed != ""){
         print("ingPassed \(ingPassed)")
 
@@ -78,19 +77,22 @@ class MealViewController: UIViewController{
             label.center = CGPoint(x: 120, y: yPos)
             label.textAlignment = .left
             label.text = "\(i) - \(ing.ingredient)"
-            yPos = yPos + 20;
+            label.font = UIFont(name: label.font.fontName, size: 14)
             self.view.addSubview(label)
+            yPos = yPos + 20;
             i = i+1
         }
         print("String passed \(stringPassed) ")
         intituleRecette.text = stringPassed
         print("Etapes passed \(etapesPassed) ")
         etapesRecette.text = etapesPassed
-        etapesRecette.center = CGPoint(x: 120, y: yPos)
+        yPos = yPos + 80
+        print("Ypos taille \(yPos)")
+        etapesRecette.center = CGPoint(x: 200, y: yPos)
         let URLTEST = URL(string: theImagePassed)
         if (theImagePassed != ""){
             URL_IMAGE = URLTEST
-            }
+            }   
             
         }
         else {
@@ -112,12 +114,16 @@ class MealViewController: UIViewController{
                 label.center = CGPoint(x: 120, y: yPos)
                 label.textAlignment = .left
                 label.text = "\(i) - \(ing.ingredient)"
-                yPos = yPos + 20;
+                label.font = UIFont(name: label.font.fontName, size: 14)
                 self.view.addSubview(label)
+                yPos = yPos + 20;
                 i = i+1
             }
             let URLRANDOM = URL(string: recetteDuJour.photo)
                 URL_IMAGE = URLRANDOM
+                yPos = yPos + 80
+                print("Ypos taille \(yPos)")
+                etapesRecette.center = CGPoint(x: 200, y: yPos)
             }
         }
         print("url image : \(URL_IMAGE)")
