@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Lite View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SQLiteViewController" customModule="if26Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,13 +195,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brn-WU-8zb">
-                                <rect key="frame" x="16" y="323" width="265" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingrédients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5S-pb-KZH">
                                 <rect key="frame" x="16" y="268" width="104" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -216,7 +209,6 @@
                     <navigationItem key="navigationItem" title="test" id="hK9-cY-NlF"/>
                     <connections>
                         <outlet property="etapesRecette" destination="Evw-d5-uLQ" id="syJ-9T-BNJ"/>
-                        <outlet property="ingRecette" destination="brn-WU-8zb" id="wEg-3S-ZKz"/>
                         <outlet property="intituleRecette" destination="GrJ-IM-PkC" id="Euy-QZ-LO1"/>
                         <outlet property="photoRecette" destination="mFC-xs-6ta" id="iTr-6a-WFe"/>
                     </connections>
@@ -486,18 +478,22 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-fC-bGL">
-                                            <rect key="frame" x="76" y="60" width="215" height="99"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cours1" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-fC-bGL">
+                                            <rect key="frame" x="76" y="59" width="215" height="99"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="99" id="Quv-7c-vph"/>
+                                                <constraint firstAttribute="width" constant="215" id="iCr-rp-wU9"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="SzG-fC-bGL" secondAttribute="bottom" constant="17" id="29h-GB-c7z"/>
-                                        <constraint firstItem="SzG-fC-bGL" firstAttribute="top" secondItem="U3L-7E-hs2" secondAttribute="bottom" constant="21" id="5DY-en-Wa1"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="U3L-7E-hs2" secondAttribute="trailing" constant="78" id="7kg-R1-Rnd"/>
-                                        <constraint firstItem="SzG-fC-bGL" firstAttribute="leading" secondItem="y9u-V2-KEc" secondAttribute="leadingMargin" constant="60" id="9jR-Lr-YQV"/>
                                         <constraint firstItem="U3L-7E-hs2" firstAttribute="top" secondItem="y9u-V2-KEc" secondAttribute="topMargin" constant="7" id="T1g-i4-Eb5"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="SzG-fC-bGL" secondAttribute="trailing" constant="42" id="YLC-Bj-4KD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="SzG-fC-bGL" secondAttribute="bottom" constant="18" id="YLL-ii-QVl"/>
                                         <constraint firstItem="U3L-7E-hs2" firstAttribute="leading" secondItem="y9u-V2-KEc" secondAttribute="leadingMargin" constant="70" id="dxh-g2-EvJ"/>
+                                        <constraint firstItem="SzG-fC-bGL" firstAttribute="leading" secondItem="y9u-V2-KEc" secondAttribute="leadingMargin" constant="60" id="fa1-tC-XR1"/>
+                                        <constraint firstItem="SzG-fC-bGL" firstAttribute="top" secondItem="U3L-7E-hs2" secondAttribute="bottom" constant="20" id="n71-W0-wOF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="SzG-fC-bGL" secondAttribute="trailing" constant="42" id="zx2-fG-wen"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -550,6 +546,7 @@
     </scenes>
     <resources>
         <image name="contact1" width="449" height="112"/>
+        <image name="cours1" width="685" height="462"/>
         <image name="cours2" width="640" height="240"/>
         <image name="cours3" width="1000" height="667"/>
         <image name="course2" width="810" height="540"/>
@@ -561,7 +558,7 @@
         <image name="twitterlogo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ut8-QM-S7Y"/>
-        <segue reference="Phf-hG-Bso"/>
+        <segue reference="Xht-QP-Iwx"/>
+        <segue reference="NaE-QE-1d6"/>
     </inferredMetricsTieBreakers>
 </document>

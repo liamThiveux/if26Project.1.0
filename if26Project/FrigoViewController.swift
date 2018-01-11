@@ -84,7 +84,7 @@ class FrigoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 print("label tag + nom \(label.tag) - \(label.text)")
                 i = i+1
                 self.view.addSubview(label)
-                let buttonDel = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 30))
+                let buttonDel = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 20))
                 buttonDel.setTitle("Supprimer", for: .normal)
                 buttonDel.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 buttonDel.center = CGPoint(x: 300, y: yPos)

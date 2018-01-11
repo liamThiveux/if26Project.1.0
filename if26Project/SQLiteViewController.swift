@@ -45,7 +45,7 @@ class SQLiteViewController: UIViewController {
             let fileUrl = documentDirectory.appendingPathComponent("recette").appendingPathExtension("sqlite3")
             let database = try Connection(fileUrl.path)
             self.database = database
-            //instanciationBase()
+            instanciationBase()
         }
         catch {
             print(error)
