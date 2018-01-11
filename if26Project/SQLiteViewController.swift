@@ -10,50 +10,16 @@ import UIKit
 import SQLite
 
 class SQLiteViewController: UIViewController {
-
-    var database : Connection!
-    
-    // Table recette
-    let recetteTable = Table("recettes")
-    let id = Expression<Int>("id")
-    let titre = Expression<String>("titre")
-    let photo = Expression<String>("photo")
-    let etapes = Expression<String>("etapes")
-
-
-    //Table link
-    let linkTable = Table("linkTable")
-    let idRecette = Expression<Int>("idRecette")
-    let idIngredient = Expression<Int>("idIng")
-    
-    //Table ingrédient
-    let ingredientTable = Table("ingredientsRecette")
-    let idIng = Expression<Int>("id")
-    let titreIng = Expression<String>("ingredient")
-    
-    //Table ingrédientPossede
-    let frigoTable = Table("frigo")
-    let idfrigo = Expression<Int>("id")
-    let ingredientFrigo = Expression<String>("ingredient")
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor : nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent("recette").appendingPathExtension("sqlite3")
-            let database = try Connection(fileUrl.path)
-            self.database = database
-            instanciationBase()
-        }
-        catch {
-            print(error)
-        }
-        instanciationBase()
+            print("test sqlClass")
+            let db = sqlClass()
+            db.connect()
+            db.instanciationBase()
+            print("test passé")
     }
     
-    func instanciationBase() {
+    /*func instanciationBase() {
         print("Dans l'instanciation")
         
         let createTable = self.recetteTable.create { (table) in
@@ -156,43 +122,6 @@ class SQLiteViewController: UIViewController {
 
     }
     
-    @IBAction func createFrigoTable(_ sender: UIButton) {
-        print("Asking to create FRIGO TABLE")
-        
-        let createTable = self.frigoTable.create { (table) in
-            table.column(self.idfrigo, primaryKey: true)
-            table.column(self.ingredientFrigo, unique : true)
-        }
-        do {
-            try self.database.run(createTable)
-            print("successfully created")
-        }
-        catch {
-            print(error)
-        }
-    }
-    
-    @IBAction func createLinkTable(_ sender: UIButton) {
-        print("Asking to create Link table")
-        
-        let createTable = self.linkTable.create { (table) in
-            table.column(self.idRecette)
-            table.column(self.idIngredient)
-            table.primaryKey(self.idRecette, self.idIngredient)
-            table.foreignKey(self.idRecette, references: recetteTable, id)
-            table.foreignKey(self.idIngredient, references: ingredientTable, idIng)
-        }
-
-        
-        do {
-            try self.database.run(createTable)
-            print("successfully created")
-        }
-        catch {
-            print(error)
-        }
-
-    }
     
     func addRecette(id: Int, titre: String, etapes: String, photo: String){
         let insertRecette = self.recetteTable.insert(self.id <- id, self.titre <-  titre, self.etapes <- etapes, self.photo <- photo)
@@ -225,100 +154,15 @@ class SQLiteViewController: UIViewController {
         catch {
             print(error)
         }
-    }
-    
-    @IBAction func insertRecette(_ sender: UIButton) {
-        print   ("Bouton   insert")
-        let   alert   =   UIAlertController(title:   "Insert   Recette",   message:   nil,   preferredStyle:   .alert)
-        alert.addTextField   {   (tf)   in   tf.placeholder   =   "Titre recette"}
-        alert.addTextField   {   (tf)   in   tf.placeholder   =   "Etapes"}
-        alert.addTextField   {   (tf)   in   tf.placeholder   =   "photoUrl"}
-        let   action   =   UIAlertAction(title:   "Submit",   style:   .default)   {   (_)   in
-            guard let   name   =   alert.textFields?.first?.text,
-                let   email   = alert.textFields![1].text,
-                let photo =   alert.textFields?.last?.text
-                else   {   return   }
-            print   (name)
-            print   (email)
-            print   (photo)
-            
-            let insertUser  = self.recetteTable.insert(self.titre <- name, self.etapes <-  email, self.photo <- photo)
-            
-            do {
-                try self.database.run(insertUser)
-                print("Recette inserted")
-            }
-            catch {
-                print(error)
-            }
-        }
-        alert.addAction(action)
-        present(alert,   animated:   true,   completion:   nil)
-    }
-    
-    @IBAction func listRecette(_ sender: UIButton) {
-    print   ("Bouton   LIST")
-        do {
-            let users = try self.database.prepare(self.recetteTable)
-            for user in users{
-                print("Recette: \(user[self.id]), Titre : \(user[self.titre]), Etapes : \(user[self.etapes]), Photo : \(user[self.photo])")
-            }
-            let ingredients = try self.database.prepare(self.ingredientTable)
-            for ing in ingredients{
-                print("ID: \(ing[self.idIng]), ingredient : \(ing[self.titreIng])")
-            }
-            let link = try self.database.prepare(self.linkTable)
-            for l in link {
-                print("id recette \(l[self.idRecette]), id ingredient : \(l[self.idIngredient])")
-            }
-        }
-        catch {
-            print(error)
-        }
-    }
-    
-    @IBAction func createIngredientTable(_ sender: UIButton) {
-        print("Asking to create Ingredient table")
-        
-        let createTable = self.ingredientTable.create { (table) in
-            table.column(self.idIng, primaryKey: true)
-            table.column(self.titreIng, unique: true)
-        }
-        
-        do {
-            try self.database.run(createTable)
-            print("successfully created")
-        }
-        catch {
-            print(error)
-        }
+    }*/
 
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func createTable(_ sender: UIButton) {
-        print("Asking to create table")
-        
-        let createTable = self.recetteTable.create { (table) in
-            table.column(self.id, primaryKey: true)
-            table.column(self.titre, unique: true)
-            table.column(self.photo)
-            table.column(self.etapes)
-        }
-        
-        do {
-            try self.database.run(createTable)
-            print("successfully created")
-        }
-        catch {
-            print(error)
-        }
-    }
-    
-    func getIdRecetteByName(intituleRecette: String) -> Recette{
+ 
+    /*func getIdRecetteByName(intituleRecette: String) -> Recette{
      
         var recetteNew : Recette = Recette.init(id: 0, titre: "", etapes: "", photo: "")
         let getRecette = recetteTable.where(titre == intituleRecette)
@@ -360,7 +204,7 @@ class SQLiteViewController: UIViewController {
          
          }
         return ing
-    }
+    }*/
     /*
     // MARK: - Navigation
 
